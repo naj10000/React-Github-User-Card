@@ -4,11 +4,15 @@ import axios from 'axios';
  function Followers(props){
 
    return (
-            <div>
+            <div className="container">
                 {props.follower.map(follower=> (
-                    <div>
+                    <div className="cards">
+                        
+                        <div className="card">
                         <img width="200" src={follower.avatar_url} key={follower.id}/>
-                <h2>{follower.login}</h2>
+                <h2 className="username">UserName: {follower.login}</h2>
+
+                </div>
                     </div>
                 ))}
             </div>
