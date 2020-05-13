@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import UserCard from './User';
 import Followers from './Followers';
+import Search from './Search';
 
  class App extends React.Component {
   constructor(){
@@ -44,6 +45,23 @@ import Followers from './Followers';
 
   }
 
+
+  searchUsers = async text => {
+
+    axios.get("https://api.github.com/search/users/naj10000/followers")
+    .then(response => {
+      this.setState({
+        follower: [...response.data]
+        
+
+      })
+      console.log(response.data.login)
+    })
+    console.log(text)
+  }
+
+
+
   
 
 
@@ -52,6 +70,7 @@ import Followers from './Followers';
   render() {
     return (
       <div>
+        <Search searchUsers={this.searchUsers} />
         <div>
        <UserCard user={this.state.user} key={this.state.user.id}/>
        </div>
